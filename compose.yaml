@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  go-app:
+    build:
+      context: ./go
+      dockerfile: Dockerfile
+    container_name: go-app-container
+    image: go-app-image
+    volumes:
+      - ./go/app:/app
+      - go-modules:/go/pkg/mod
+    ports:
+      - "8080:8080"
+
+volumes:
+  go-modules:

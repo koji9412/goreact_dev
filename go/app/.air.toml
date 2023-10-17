@@ -1,0 +1,47 @@
+# .air.toml
+
+# プロジェクトのルートディレクトリ
+root = "."
+# 一時ファイルやビルド結果を保存するディレクトリ
+tmp_dir = "tmp"
+
+[build]
+  # ビルドコマンド
+  cmd = "go build -o ./tmp/main ."
+  # ビルド後に実行するバイナリのパス
+  bin = "tmp/main"
+  # airのログを保存するファイル
+  log = "air.log"
+  # ビルドに失敗した際に前回のバイナリを実行するかどうか
+  full_bin = ""
+
+[watch]
+  # ファイルの変更を監視するディレクトリやファイル
+  includes = [
+    "."
+  ]
+  # ファイルの変更を監視しないディレクトリやファイル
+  excludes = [
+    "tmp",
+    "vendor",
+    "frontend/node_modules"
+  ]
+  # 監視するファイルの拡張子
+  exts = [".go", ".tpl", ".tmpl", ".html"]
+  # 監視間隔 (ms)
+  delay = 1000
+
+[color]
+  # ログのカラーリング設定
+  main = "magenta"
+  watcher = "cyan"
+  build = "yellow"
+  runner = "green"
+
+[log]
+  # ログの出力レベル
+  level = "info"
+
+[notify]
+  # ビルドや実行に関する通知を表示するかどうか
+  enabled = true
